@@ -15,7 +15,7 @@
 
 ## 学习资料
 
-towhee github：https://github.com/towhee-io/towhee
-towhee 生成图片特征：https://towhee.io/image-text-embedding/taiyi
-milvus 官网：https://milvus.io/
-milvus github：https://github.com/milvus-io
+- towhee github：https://github.com/towhee-io/towhee
+- towhee 生成图片特征：https://towhee.io/image-text-embedding/taiyi
+- milvus 官网：https://milvus.io/
+- milvus github：https://github.com/milvus-io

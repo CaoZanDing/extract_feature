@@ -10,6 +10,15 @@ app = Flask(__name__)
 2、 通过towhee，提取图片向量特征，参考：https://towhee.io/image-text-embedding/taiyi
 '''
 
+# towhee 流水线提取图片特征
+img_pipe = (
+    pipe.input('url')
+    .map('url', 'img', ops.image_decode.cv2_rgb())
+    .map('img', 'vec',
+         ops.image_text_embedding.taiyi(model_name='taiyi-clip-roberta-102m-chinese', modality='image'))
+    .output('vec')
+)
+
 
 @app.route('/get_feature', methods=['POST'])
 def number_classify():
@@ -18,15 +27,6 @@ def number_classify():
     request_body = request.json
     image_url = request_body['image_url']
     print(image_url)
-
-    # towhee 流水线提取图片特征
-    img_pipe = (
-        pipe.input('url')
-        .map('url', 'img', ops.image_decode.cv2_rgb())
-        .map('img', 'vec',
-             ops.image_text_embedding.taiyi(model_name='taiyi-clip-roberta-102m-chinese', modality='image'))
-        .output('vec')
-    )
 
     data = DataCollection(img_pipe(image_url))
     print(data[0]['vec'])
