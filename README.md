@@ -12,6 +12,22 @@
 架构图：
 ![./img/图片近似检索架构](image/img.png)
 
+1. 启动服务，python image_search.py
+2. insert milvus, 可视化可通过attu查看
+```
+POST /insert_milvus
+{
+    "image_url": "https://towhee.io/assets/img/logo-title.png"
+}
+```
+3. index search
+```
+POST /feature_search
+{
+    "image_url": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+}
+```
+
 
 ## 学习资料
 
